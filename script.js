@@ -11,37 +11,43 @@ List.innerHTML = "";
 let index = 0;
 
 function create() {
-    Text.textContent = Input.value;
-    List.innerHTML += `${Task.outerHTML}`;
-
-
-    for (let i = 0; i < CheckBox.length; i++) {
-        
-        CheckBox[i].addEventListener('click', function() {
-            const check = this;
-            if(index == 0){
-                check.style.background = "orange";
-                check.style.color = "white";
-                index++;
-            }
-            else if(index == 1){
-                check.style.background = "none";
-                index--;
-            }
-           
-        });
+    if(Input.value == "") {
+        window.alert("Please enter a valid value");
+    }else{
+        Text.textContent = Input.value;
+        List.innerHTML += `${Task.outerHTML}`;
+    
+    
+        for (let i = 0; i < CheckBox.length; i++) {
+            
+            CheckBox[i].addEventListener('click', function() {
+                const check = this;
+                if(index == 0){
+                    check.style.background = "orange";
+                    check.style.color = "white";
+                    index++;
+                }
+                else if(index == 1){
+                    check.style.background = "none";
+                    index--;
+                }
+               
+            });
+        }
+    
+        for (let i = 0; i < Delete.length; i++) {
+            Delete[i].addEventListener('click', function() {
+                const button = this;
+                button.style.backgroundColor = "red";
+                setTimeout(()=> {
+                    const taskToRemove = button.parentElement;
+                    taskToRemove.remove();
+                }, 200);
+            });
+        }
+    
+    }
     }
 
-    for (let i = 0; i < Delete.length; i++) {
-        Delete[i].addEventListener('click', function() {
-            const button = this;
-            button.style.backgroundColor = "red";
-            setTimeout(()=> {
-                const taskToRemove = button.parentElement;
-                taskToRemove.remove();
-            }, 200);
-        });
-    }
-}
 
 
