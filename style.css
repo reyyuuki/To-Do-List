@@ -103,7 +103,10 @@ button:active{
 }
 @media  only screen and (max-width:600px){
     .Container{
-        width:80%;
+        width:90%;
         height: 80%;
+    }
+    button{
+        height:100%;
     }
 }
